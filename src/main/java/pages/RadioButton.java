@@ -7,7 +7,6 @@ import org.openqa.selenium.interactions.Actions;
 
 public class RadioButton {
     private WebDriver driver;
-
     public RadioButton (WebDriver driver){
         this.driver = driver;
     }
