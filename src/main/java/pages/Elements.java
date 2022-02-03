@@ -2,34 +2,38 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 
-public class RadioButton {
+public class Elements {
     private WebDriver driver;
-    private By yesButton = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[1]/div[2]/label");
-    private By impressiveButton = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[1]/div[3]");
-    private By noButton = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[1]/div[4]");
-    private By textField = By.xpath("//p[@class='mt-3']");
+    private By textButton = By.id("item-0");
+    private By radioButton = By.id("item-2");
+    private By buttonsPage = By.id("item-4");
 
-    public RadioButton (WebDriver driver){
+    public Elements(WebDriver driver){
         this.driver = driver;
     }
-    public void clickYes(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(yesButton)).click();
+    public TextBox clickText() {
+        Actions actions = new Actions(driver);
+        WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(10));
+        WebElement element = driver.findElement(textButton);
+        actions.click(element).perform();
+        return new TextBox(driver);
     }
-    public void clickImpressive(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(impressiveButton)).click();
+    public RadioButton clickRadioButton(){
+        WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(radioButton));
+        element.click();
+        return new RadioButton(driver);
     }
-    public void clickNoButton(){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(noButton)).click();
-    }
-    public String checkResult(){
-        return driver.findElement(textField).getText();
+    public ButtonsPage clickButtons(){
+        WebDriverWait wait = new WebDriverWait (driver, Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(buttonsPage));
+        element.click();
+        return new ButtonsPage(driver);
     }
 }
