@@ -6,30 +6,27 @@ import static org.testng.Assert.assertEquals;
 
 public class RadioButtonTest extends BaseTests {
     @Test
-    public void yesButtonTest(){
+    public void radioYesButton(){
         var elementsPage = homePage.clickElements();
         var radioPage = elementsPage.clickRadioButton();
-        String selectedYes = "You have selected Yes";
-      
+        String yesResult = "You have selected Yes";
         radioPage.clickYes();
-        assertEquals(radioPage.checkResult(), selectedYes, "Yes is not working");     
+        assertEquals(radioPage.checkResult(), yesResult, "Yes is not working");
     }
     @Test
-    public void impressiveButtonTest(){
+    public void radioImpressiveButton(){
         var elementsPage = homePage.clickElements();
         var radioPage = elementsPage.clickRadioButton();
-        String selectedImpressive = "You have selected Impressive";
-        
+        String impressiveResult = "You have selected Impressive";
         radioPage.clickImpressive();
-        assertEquals(radioPage.checkResult(), selectedImpressive, "Impressive is not working");
-    }   
-     @Test
-    public void noButtonTest(){
+        assertEquals(radioPage.checkResult(), impressiveResult, "Impressive is not working");
+    }
+    @Test
+    public void radioNoButtonTest(){
         var elementsPage = homePage.clickElements();
         var radioPage = elementsPage.clickRadioButton();
-        String selectedNoButton = "You have selected No Button";
-        
+        String noButtonResult = "You have selected No";
         radioPage.clickNoButton();
-        assertEquals(radioPage.checkResult(), selectedNoButton, "No Button is not working");
-    }   
+        assertEquals(radioPage.checkResult(), noButtonResult, "No Button is not working");
+    }
 }
