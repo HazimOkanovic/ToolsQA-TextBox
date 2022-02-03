@@ -2,25 +2,34 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class Elements {
+import java.time.Duration;
+
+public class RadioButton {
     private WebDriver driver;
-    private By textButton = By.id("item-0");
-    private By radioButton = By.id("item-2");
+    private By yesButton = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[1]/div[2]/label");
+    private By impressiveButton = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[1]/div[3]");
+    private By noButton = By.xpath("/html/body/div[2]/div/div/div[2]/div[2]/div[1]/div[4]");
+    private By textField = By.xpath("//p[@class='mt-3']");
 
-    public Elements(WebDriver driver){
+    public RadioButton (WebDriver driver){
         this.driver = driver;
     }
-    public TextBox clickText() {
-        Actions actions = new Actions(driver);
-        WebElement element = driver.findElement(textButton);
-        actions.click(element).perform();
-        return new TextBox(driver);
+    public void clickYes(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(yesButton)).click();
     }
-    public RadioButton clickRadioButton(){
-        driver.findElement(radioButton).click();
-        return new RadioButton(driver);
+    public void clickImpressive(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(impressiveButton)).click();
+    }
+    public void clickNoButton(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(noButton)).click();
+    }
+    public String checkResult(){
+        return driver.findElement(textField).getText();
     }
 }
