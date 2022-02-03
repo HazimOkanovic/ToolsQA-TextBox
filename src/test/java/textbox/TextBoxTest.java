@@ -13,19 +13,19 @@ public class TextBoxTest extends BaseTests {
 
         String name = "Hazim Okanovic";
         String email = "hazimokanovic@gmail.com";
-        String currentAddress = "Sahmani bb";
-        String permanentAddress = "Bosnia and Herzegovina";
+        String addressNow = "Sahmani bb";
+        String addressAlways = "Bosnia and Herzegovina";
 
         textPage.enterUserName(name);
         textPage.enterEmail(email);
-        textPage.enterCurrentAddress(currentAddress);
-        textPage.enterPermanentAddress(permanentAddress);
+        textPage.enterCurrentAddress(addressNow);
+        textPage.enterPermanentAddress(addressAlways);
         textPage.clickSubmit();
 
         assertEquals("Still not good enough", "Name:"+name, textPage.checkName());
         assertEquals("Email is not right", "Email:"+email, textPage.checkEmail());
-        assertEquals("Current address is not right", "Current Address :"+currentAddress, textPage.checkAddressNow());
-        assertEquals("Permanent address is not right", "Permananet Address :"+permanentAddress, textPage.checkPermanentAddress());
+        assertEquals("Current address is not right", "Current Address :"+addressNow, textPage.checkAddressNow());
+        assertEquals("Permanent address is not right", "Permananet Address :"+addressAlways, textPage.checkPermanentAddress());
         }
     @Test
     public void invalidEmailTest() {
@@ -43,20 +43,19 @@ public class TextBoxTest extends BaseTests {
         var textPage = elementsPage.clickText();
         String name = "Hazim";
         String email = "hazimokanovic@yahoo.com";
-        String currentAddress = "Sahmani bb";
-        String permanentAddress = "Bosnia and Herzegovina";
+        String addressNow = "Sahmani bb";
+        String addressAlways = "Bosnia and Herzegovina";
         textPage.enterUserName(name);
         textPage.clickSubmit();
         assertEquals("Name is not right","Name:"+name,textPage.checkName());
         textPage.enterEmail(email);
         textPage.clickSubmit();
         assertEquals("Email is not right", "Email:"+email,textPage.checkEmail());
-        textPage.enterCurrentAddress(currentAddress);
+        textPage.enterCurrentAddress(addressNow);
         textPage.clickSubmit();
-        assertEquals("Current Address is not right", "Current Address :"+currentAddress, textPage.checkAddressNow());
-        textPage.enterPermanentAddress(permanentAddress);
+        assertEquals("Current Address is not right", "Current Address :"+addressNow, textPage.checkAddressNow());
+        textPage.enterPermanentAddress(addressAlways);
         textPage.clickSubmit();
-        assertEquals("Permanent Address is not right", "Permananet Address :"+permanentAddress, textPage.checkPermanentAddress());
+        assertEquals("Permanent Address is not right", "Permananet Address :"+addressAlways, textPage.checkPermanentAddress());
     }
 }
-
