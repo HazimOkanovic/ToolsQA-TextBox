@@ -29,7 +29,7 @@ public class RadioButtonTest extends BaseTests {
         var radioPage = elementsPage.clickRadioButton();
         String selectedNoButton = "You have selected No Button";
         
-        radioPage.clickImpressive();
+        radioPage.clickNoButton();
         assertEquals(radioPage.checkResult(), selectedNoButton, "No Button is not working");
     }   
 }
